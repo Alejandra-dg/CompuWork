@@ -54,12 +54,12 @@ public class ReporteDesempenio {
 
         if (empleado instanceof EmpleadoPermanente) {
             EmpleadoPermanente ep = (EmpleadoPermanente) empleado;
-            sb.append("Bono estimado: $").append(String.format("%.2f", ep.calcularBonos())).append("\n");
-            sb.append("Beneficios: ").append(ep.getBeneficios()).append("\n");
+            System.out.println("Bono estimado: $" + String.format("%.2f", ep.calcularBonos()) + "\n");
+            System.out.println("Beneficios: " + ep.getBeneficios() + "\n");
         } else if (empleado instanceof EmpleadoTemporal) {
             EmpleadoTemporal et = (EmpleadoTemporal) empleado;
-            sb.append("Agencia: ").append(et.getAgencia()).append("\n");
-            sb.append("Contrato vigente: ").append(et.estaVigente() ? "Sí" : "No").append("\n");
+            System.out.println("Agencia: " + et.getAgencia());
+            System.out.println("Contrato vigente: " + (et.estaVigente() ? "Sí" : "No"));
         } 
 
         this.metricas = sb.toString();
@@ -75,12 +75,13 @@ public class ReporteDesempenio {
         }
 
         StringBuilder sb = new StringBuilder();
-        sb.append("=== REPORTE DE DEPARTAMENTO: ").append(departamento.getNombre()).append(" ===\n");
-        sb.append(departamento.obtenerMetricas()).append("\n\n");
-        sb.append("--- Detalle de Empleados ---\n");
+        System.out.println("=== REPORTE DE DEPARTAMENTO: " + departamento.getNombre() + " ===");
+        System.out.println(departamento.obtenerMetricas());
+        System.out.println();
+        System.out.println("--- Detalle de Empleados ---");
 
         for (Empleado e : departamento.listarEmpleados()) {
-            sb.append(e.obtenerDatos()).append("\n");
+            System.out.println(e.obtenerDatos());
         }
 
         this.metricas = sb.toString();

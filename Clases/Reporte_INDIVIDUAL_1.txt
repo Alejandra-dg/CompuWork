@@ -1,0 +1,15 @@
+REPORTE DE DESEMPEÑO - CompuWork
+ID Reporte: 1
+Tipo: INDIVIDUAL
+Fecha: Thu Mar 12 22:24:43 COT 2026
+==============================
+
+=== MÉTRICAS DE DESEMPEÑO ===
+Empleado: Ana Martínez
+Cargo: Desarrolladora Senior
+Salario: $5500,00
+Fecha Ingreso: Sun Mar 15 22:24:43 COT 2020
+Antigüedad: 2188 días
+Calificación: EXCELENTE
+Bono estimado: $550,00
+Beneficios: [Seguro médico, Bono anual]

@@ -250,8 +250,8 @@ public class WebServidor {
         sb.append("<label>Contraseña</label><input name=\"contrasena\" type=\"password\" minlength=\"6\" placeholder=\"Mínimo 6 caracteres\" required>");
         sb.append("</div><div class=\"form-card\">");
         sb.append("<h3>Asignación</h3>");
-        sb.append("<label>ID de departamento</label><input name=\"idDepartamento\" type=\"number\" min=\"1\" placeholder=\"Ej: 1\" required>");
-        sb.append("<span class=\"form-note\">El supervisor debe pertenecer a un departamento existente.</span>");
+        sb.append("<label>Departamento</label>" + departamentosSeleccionables());
+        sb.append("<span class=\"form-note\">Seleccione el departamento al que pertenecerá el supervisor.</span>");
         sb.append("</div></div>");
         sb.append("<div class=\"action-group\"><button class=\"btn-primary\" type=\"submit\">Crear Supervisor</button></div></form></section>");
         return sb.toString();
@@ -259,10 +259,15 @@ public class WebServidor {
 
     private String departamentosSeleccionables() {
         StringBuilder sb = new StringBuilder();
-        sb.append("<select name=\"idDepartamento\">\n");
-        for (Departamento d : empresa.listarDepartamentos()) {
-            sb.append("<option value=\"").append(d.getIdDepto()).append("\">")
-              .append(d.getNombre()).append(" (#").append(d.getIdDepto()).append(")</option>\n");
+        sb.append("<select name=\"idDepartamento\" required>\n");
+        if (empresa.listarDepartamentos().isEmpty()) {
+            sb.append("<option value=\"\" disabled selected>No hay departamentos disponibles</option>\n");
+        } else {
+            sb.append("<option value=\"\" disabled selected>Seleccione un departamento</option>\n");
+            for (Departamento d : empresa.listarDepartamentos()) {
+                sb.append("<option value=\"").append(d.getIdDepto()).append("\">")
+                  .append(d.getNombre()).append(" (#").append(d.getIdDepto()).append(")</option>\n");
+            }
         }
         sb.append("</select>");
         return sb.toString();
